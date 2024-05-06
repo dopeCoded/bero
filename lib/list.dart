@@ -9,6 +9,13 @@ class ListScreen extends StatefulWidget {
 }
 
 class ListScreenState extends State<ListScreen> {
+  final List<String> lessons = [
+    "Basic Topics",
+    "Intermediate Topics",
+    "Advanced Topics",
+    "Expert Topics",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +23,10 @@ class ListScreenState extends State<ListScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.01),  // 横方向のパディングを少し減らす
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.01),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,  // 左揃えに設定
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
                   children: <Widget>[
@@ -34,13 +41,13 @@ class ListScreenState extends State<ListScreen> {
                     Icon(
                       Icons.expand_more,
                       color: Colors.white,
-                      size: 32,  // アイコンのサイズをテキストに合わせる
+                      size: 32,
                     ),
                     Spacer(),
                     Icon(
                       Icons.local_fire_department,
                       color: Colors.white,
-                      size: 32,  // アイコンのサイズをテキストに合わせる
+                      size: 32,
                     ),
                     Text(
                       '1',
@@ -58,79 +65,57 @@ class ListScreenState extends State<ListScreen> {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 SizedBox(height: 10),
-                Container(
-                  width: MediaQuery.of(context).size.width * 1,  // コンテナの幅を広げる
-                  padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.07,horizontal: MediaQuery.of(context).size.width * 0.05),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1B1C1D),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                            Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                            Padding(
-                              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                              child: Text('Lesson 1:', style: TextStyle(fontSize: 18, color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                              child: Text('Basic Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
-                            ),
-                          ],
-                        ),
-                      ),
+                ...lessons.asMap().entries.map((entry) {
+                  int idx = entry.key;
+                  String lesson = entry.value;
+                  return Column(
+                    children: [
+                      lessonWidget(context, idx, lesson),
+                      SizedBox(height: 10),  // ここで間に余白を挟む
                     ],
-                  ),
-                ),
+                  );
+                }).toList(),
                 SizedBox(height: 20),
-                Text(
-                  'Next Lesson',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.07),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1B1C1D),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                      Padding(
-                        padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                        child: Text('Lesson 2:', style: TextStyle(fontSize: 18, color: Colors.white)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                        child: Text('Advanced Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
-                      ),
-                      SizedBox(height: 20),
-                      Center(  // Center ウィジェットを追加してボタンを中央に配置
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Button action
-                          },
-                          child: Text('Start', style: TextStyle(fontSize: 18, color: Colors.white)),
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, backgroundColor: Colors.blue,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget lessonWidget(BuildContext context, int index, String lessonName) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.01, horizontal: MediaQuery.of(context).size.width * 0.05),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1B1C1D),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: <Widget>[
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '${index + 1}   ',  // インデックスを1から数えるように +1
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),
+                ),
+                TextSpan(
+                  text: lessonName,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+          Spacer(),
+          IconButton(
+            icon: Icon(Icons.play_circle, color: Colors.blue, size: 30),
+            onPressed: () {
+              // ここで何かアクションを実行
+            },
+          ),
+        ],
       ),
     );
   }
