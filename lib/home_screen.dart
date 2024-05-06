@@ -21,9 +21,36 @@ class HomeScreenState extends State<HomeScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,  // 左揃えに設定
               children: <Widget>[
-                Text(
-                  'Germany',
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'Germany',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Icon(
+                      Icons.expand_more,
+                      color: Colors.white,
+                      size: 32,  // アイコンのサイズをテキストに合わせる
+                    ),
+                    Spacer(),
+                    Icon(
+                      Icons.local_fire_department,
+                      color: Colors.white,
+                      size: 32,  // アイコンのサイズをテキストに合わせる
+                    ),
+                    Text(
+                      '1',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -45,14 +72,9 @@ class HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                            Padding(
-                              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                              child: Text('Lesson 1:', style: TextStyle(fontSize: 18, color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                              child: Text('Basic Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
-                            ),
+                            Text(''),
+                            Text('Lesson 1:', style: TextStyle(fontSize: 18, color: Colors.white),),
+                            Text('Basic Topics', style: TextStyle(fontSize: 18, color: Colors.grey),),
                           ],
                         ),
                       ),
@@ -77,14 +99,9 @@ class HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                      Padding(
-                        padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                        child: Text('Lesson 2:', style: TextStyle(fontSize: 18, color: Colors.white)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                        child: Text('Advanced Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
-                      ),
+                      Text(''),
+                      Text('Lesson 2:', style: TextStyle(fontSize: 18, color: Colors.white)),
+                      Text('Advanced Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
                       SizedBox(height: 20),
                       Center(  // Center ウィジェットを追加してボタンを中央に配置
                         child: ElevatedButton(
