@@ -39,7 +39,7 @@ class HomeScreenState extends State<HomeScreen> {
                     Spacer(),
                     Icon(
                       Icons.local_fire_department,
-                      color: Colors.white,
+                      color: Colors.red,
                       size: 32,  // アイコンのサイズをテキストに合わせる
                     ),
                     Text(

@@ -9,7 +9,7 @@ class LectureScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.blue),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.blue),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text('German Grammar', style: TextStyle(color: Colors.white)),

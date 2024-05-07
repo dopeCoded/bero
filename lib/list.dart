@@ -47,7 +47,7 @@ class ListScreenState extends State<ListScreen> {
                     Spacer(),
                     Icon(
                       Icons.local_fire_department,
-                      color: Colors.white,
+                      color: Colors.red,
                       size: 32,
                     ),
                     Text(
