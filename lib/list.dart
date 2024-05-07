@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'lecture.dart';
 import 'dart:math' as math;
 
 class ListScreen extends StatefulWidget {
@@ -112,7 +113,13 @@ class ListScreenState extends State<ListScreen> {
           IconButton(
             icon: Icon(Icons.play_circle, color: Colors.blue, size: 30),
             onPressed: () {
-              // ここで何かアクションを実行
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      LectureScreen(),
+                ),
+              );
             },
           ),
         ],
