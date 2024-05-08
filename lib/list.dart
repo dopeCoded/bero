@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'lecture.dart';
-import 'dart:math' as math;
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -66,13 +65,14 @@ class ListScreenState extends State<ListScreen> {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 SizedBox(height: 10),
+                styledHeader('Chapter 1'),  // Styled header with lines
                 ...lessons.asMap().entries.map((entry) {
                   int idx = entry.key;
                   String lesson = entry.value;
                   return Column(
                     children: [
                       lessonWidget(context, idx, lesson),
-                      SizedBox(height: 10),  // ここで間に余白を挟む
+                      SizedBox(height: 10),  // Space between items
                     ],
                   );
                 }).toList(),
@@ -99,7 +99,7 @@ class ListScreenState extends State<ListScreen> {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: '${index + 1}   ',  // インデックスを1から数えるように +1
+                  text: '${index + 1}.   ',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),
                 ),
                 TextSpan(
@@ -116,11 +116,40 @@ class ListScreenState extends State<ListScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      LectureScreen(),
+                  builder: (context) => LectureScreen(),
                 ),
               );
             },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget styledHeader(String text) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      width: MediaQuery.of(context).size.width,
+      color: Colors.black,  // Set the background to black
+      child: Row(
+        children: [
+          Expanded(
+            child: Divider(color: Colors.grey),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Divider(color: Colors.grey),
           ),
         ],
       ),

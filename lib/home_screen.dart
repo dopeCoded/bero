@@ -72,9 +72,6 @@ class HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                            Text(''),
-                            Text('Lesson 1:', style: TextStyle(fontSize: 18, color: Colors.white),),
-                            Text('Basic Topics', style: TextStyle(fontSize: 18, color: Colors.grey),),
                           ],
                         ),
                       ),
@@ -99,9 +96,7 @@ class HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text('Chapter 1', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                      Text(''),
-                      Text('Lesson 2:', style: TextStyle(fontSize: 18, color: Colors.white)),
-                      Text('Advanced Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
+                      Text('2.  Advanced Topics', style: TextStyle(fontSize: 18, color: Colors.grey)),
                       SizedBox(height: 20),
                       Center(  // Center ウィジェットを追加してボタンを中央に配置
                         child: ElevatedButton(
