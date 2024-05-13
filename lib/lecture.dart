@@ -16,52 +16,61 @@ class LectureScreen extends StatelessWidget {
       ),
       backgroundColor: Colors.black,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'German Personal Pronouns',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-              SizedBox(height: 20),
-              buildPronounTable(),
-              SizedBox(height: 20),
-              Text(
-                'Notes:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-              SizedBox(height: 10),
-              Text(
-                '1. "Ich" is always lowercase unless it is at the beginning of a sentence.',
-                style: TextStyle(color: Colors.white),
-              ),
-              SizedBox(height: 8),
-              Text(
-                '2. "Du" and "ihr" are generally lowercase and used among family, close friends, or from adults to children in informal settings.',
-                style: TextStyle(color: Colors.white),
-              ),
-              SizedBox(height: 8),
-              Text(
-                '3. "Sie" is always capitalized when used as a polite form.',
-                style: TextStyle(color: Colors.white),
-              ),
-              SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to the next screen (questions)
-                  },
-                  child: Text('Continue', style: TextStyle(fontSize: 18)),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue,
-                  ),
+        child: Column(
+          children: <Widget>[
+            Expanded( // スクロール可能なコンテンツ領域をExpandedウィジェットで囲む
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'German Personal Pronouns',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    SizedBox(height: 20),
+                    buildPronounTable(),
+                    SizedBox(height: 20),
+                    Text(
+                      'Notes:',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      '1. "Ich" is always lowercase unless it is at the beginning of a sentence.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      '2. "Du" and "ihr" are generally lowercase and used among family, close friends, or from adults to children in informal settings.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      '3. "Sie" is always capitalized when used as a polite form.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(height: 20),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            Container( // ボタンを固定するためのContainer
+              width: MediaQuery.of(context).size.width * 0.6,
+              padding: EdgeInsets.all(16),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Navigate to the next screen (questions)
+                },
+                child: Text('Continue', style: TextStyle(fontSize: 18)),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
