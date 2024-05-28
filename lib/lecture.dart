@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 class LectureScreen extends StatelessWidget {
   const LectureScreen({Key? key}) : super(key: key);
@@ -60,7 +61,10 @@ class LectureScreen extends StatelessWidget {
               padding: EdgeInsets.all(16),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to the next screen (questions)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuestionScreen()),
+                  );
                 },
                 child: Text('Continue', style: TextStyle(fontSize: 18)),
                 style: ElevatedButton.styleFrom(
